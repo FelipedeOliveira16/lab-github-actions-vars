@@ -15,4 +15,4 @@ jobs:
       - env:
           URL: ${{ vars.URL_AMBIENTE }}
           TOKEN: ${{ secrets.API_TOKEN_PROD }}
-        run: echo "URL $URL e Token $TOKEN
+        run: echo "URL $URL e Token $TOKEN"
