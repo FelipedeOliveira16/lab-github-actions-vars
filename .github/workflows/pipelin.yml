@@ -1,0 +1,18 @@
+name: Desafio Final
+on:
+  workflow_dispatch:
+jobs:
+  build_app:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Usuario ${{ github.actor }} no repo ${{ github.repository }} no SO ${{ runner.os }}"
+      - run: echo "BUILD_HASH=$RANDOM" >> $GITHUB_ENV
+      - run: echo "O hash gerado foi $BUILD_HASH"
+  deploy_app:
+    needs: build_app
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          URL: ${{ vars.URL_AMBIENTE }}
+          TOKEN: ${{ secrets.API_TOKEN_PROD }}
+        run: echo "URL $URL e Token $TOKEN
